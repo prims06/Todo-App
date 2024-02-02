@@ -6,6 +6,7 @@ import 'package:whatsapp_clone/app/core/values/colors.dart';
 import 'package:whatsapp_clone/app/data/models/task.dart';
 import 'package:whatsapp_clone/app/modules/home/controller.dart';
 import 'package:whatsapp_clone/app/modules/home/widgets/add_card.dart';
+import 'package:whatsapp_clone/app/modules/home/widgets/add_dialog.dart';
 import 'package:whatsapp_clone/app/modules/home/widgets/task_card.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -53,7 +54,13 @@ class HomePage extends GetView<HomeController> {
         floatingActionButton: DragTarget<Task>(
           builder: (_, __, ___) => Obx((() => FloatingActionButton(
                 backgroundColor: controller.deleting.value ? Colors.red : blue,
-                onPressed: () {},
+                onPressed: () {
+                  if (controller.tasks.isNotEmpty) {
+                    Get.to(() => AddDialog(), transition: Transition.downToUp);
+                  } else {
+                    EasyLoading.showInfo('Please create your task type first');
+                  }
+                },
                 child:
                     Icon(controller.deleting.value ? Icons.add : Icons.delete),
               ))),
