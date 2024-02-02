@@ -3,6 +3,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:whatsapp_clone/app/core/utils/extention.dart';
+import 'package:whatsapp_clone/app/modules/detail/widgets/doing_list.dart';
 import 'package:whatsapp_clone/app/modules/home/controller.dart';
 
 class DetailPage extends StatelessWidget {
@@ -92,40 +93,42 @@ class DetailPage extends StatelessWidget {
           }),
           Padding(
               padding:
-                  EdgeInsets.symmetric(vertical: 2.0.wp, horizontal: 5.0.wp)),
-          TextFormField(
-            controller: homeCtrl.editController,
-            autofocus: true,
-            decoration: InputDecoration(
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey[400]!),
-                ),
-                prefixIcon: Icon(
-                  Icons.check_box_outline_blank,
-                  color: Colors.grey[400]!,
-                ),
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    if (homeCtrl.formKey.currentState!.validate()) {
-                      var success =
-                          homeCtrl.addTodo(homeCtrl.editController.text);
-                      if (success) {
-                        EasyLoading.showSuccess('Todo added !');
-                      } else {
-                        EasyLoading.showError('Todo item already exist');
-                      }
-                      homeCtrl.editController.clear();
-                    }
-                  },
-                  icon: const Icon(Icons.done),
-                )),
-            validator: (value) {
-              if (value == null || value.trim().isEmpty) {
-                return 'Please enter your todo item';
-              }
-              return null;
-            },
-          )
+                  EdgeInsets.symmetric(vertical: 2.0.wp, horizontal: 5.0.wp),
+              child: TextFormField(
+                controller: homeCtrl.editController,
+                autofocus: true,
+                decoration: InputDecoration(
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey[400]!),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.check_box_outline_blank,
+                      color: Colors.grey[400]!,
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        if (homeCtrl.formKey.currentState!.validate()) {
+                          var success =
+                              homeCtrl.addTodo(homeCtrl.editController.text);
+                          if (success) {
+                            EasyLoading.showSuccess('Todo added !');
+                          } else {
+                            EasyLoading.showError('Todo item already exist');
+                          }
+                          homeCtrl.editController.clear();
+                        }
+                      },
+                      icon: const Icon(Icons.done),
+                    )),
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'Please enter your todo item';
+                  }
+                  return null;
+                },
+              )),
+              DoingList(),
+              
         ],
       ),
     ));
