@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:whatsapp_clone/app/core/utils/extention.dart';
 import 'package:whatsapp_clone/app/modules/detail/widgets/doing_list.dart';
+import 'package:whatsapp_clone/app/modules/detail/widgets/done_list.dart';
 import 'package:whatsapp_clone/app/modules/home/controller.dart';
 
 class DetailPage extends StatelessWidget {
@@ -127,8 +128,8 @@ class DetailPage extends StatelessWidget {
                   return null;
                 },
               )),
-              DoingList(),
-              
+          DoingList(),
+          DoneList(),
         ],
       ),
     ));

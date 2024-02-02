@@ -17,13 +17,8 @@ class DoingList extends StatelessWidget {
               Image.asset(
                 'assets/images/add_task.png',
                 fit: BoxFit.cover,
-                width: 65.0.wp,
+                width: 90.0.wp,
               ),
-              Text(
-                'Add Task',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0.sp),
-              )
             ],
           )
         : ListView(
@@ -48,7 +43,6 @@ class DoingList extends StatelessWidget {
                                 },
                               ),
                             ),
-                            
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 4.0.wp),
                               child: Text(
@@ -59,11 +53,13 @@ class DoingList extends StatelessWidget {
                         ),
                       ))
                   .toList(),
-                  if(homeCtrl.doingTodos.isNotEmpty)
-                 Padding(
-                   padding: EdgeInsets.symmetric(horizontal:5.0.wp),
-                   child: const Divider(thickness: 2,),
-                 )
+              if (homeCtrl.doingTodos.isNotEmpty)
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5.0.wp),
+                  child: const Divider(
+                    thickness: 2,
+                  ),
+                )
             ],
           ));
   }
