@@ -50,8 +50,8 @@ class ReportPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildStatus(Colors.green, liveTasks, 'Live Tasks'),
-                  _buildStatus(Colors.orange, completedTask, 'Completed Tasks'),
-                  _buildStatus(Colors.blue, createdTasks, 'Created Tasks')
+                  _buildStatus(Colors.orange, completedTask, 'Completed'),
+                  _buildStatus(Colors.blue, createdTasks, 'Created')
                 ],
               ),
             ),
@@ -132,7 +132,7 @@ class ReportPage extends StatelessWidget {
             ),
             Text(
               text,
-              style: TextStyle(fontSize: 12.0.wp, color: Colors.grey),
+              style: TextStyle(fontSize: 12.0.sp, color: Colors.grey),
             )
           ],
         )

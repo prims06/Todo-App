@@ -18,6 +18,7 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
       body: Obx(
         () => IndexedStack(
+          index: controller.tabIndex.value,
           children: [
             SafeArea(
                 child: ListView(
@@ -83,7 +84,11 @@ class HomePage extends GetView<HomeController> {
         ),
         child: Obx(
           () => BottomNavigationBar(
-            onTap: (int index) => controller.changeTabIndex(index),
+            onTap: (int index) {
+              print(controller.tabIndex.value);
+
+              controller.changeTabIndex(index);
+            },
             currentIndex: controller.tabIndex.value,
             showSelectedLabels: false,
             showUnselectedLabels: false,
